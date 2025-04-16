@@ -49,7 +49,7 @@ const WeatherFetcher = () => {
     const tomorrow = daily[1]; // [0] = idag, [1] = imorgon
   
     return (
-      <div>
+      <div>        
         <h2>Vädret idag</h2>
         <p>{current.weather[0].description}</p>
         <p>Temperatur: {current.temp} °C</p>
@@ -60,8 +60,8 @@ const WeatherFetcher = () => {
         <h2>Morgondagens prognos</h2>
         <p>{tomorrow.weather[0].description}</p>
         <p>Dagtemp: {tomorrow.temp.day} °C</p>
-        <p>Morgontemp: {tomorrow.temp.morning} °C</p>
-        <p>Eftermiddagstemp: {tomorrow.temp.evening} °C</p>
+        <p>Morgontemp: {tomorrow.temp.morning ? tomorrow.temp.morning : "Data inte tillgänglig"} °C</p>
+        <p>Eftermiddagstemp: {tomorrow.temp.evening ? tomorrow.temp.evening : "Data inte tillgänglig"} °C</p>
         <p>Min: {tomorrow.temp.min} °C, Max: {tomorrow.temp.max} °C</p>
       </div>
     );
