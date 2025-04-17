@@ -8,7 +8,7 @@ const WeatherFetcher = () => {
   
     useEffect(() => {
       const fetchWeather = async (latitude: number, longitude: number) => {
-        const apiKey = "eb14c3a5254264e10c6b1096517991a9"; // Här använder du din API-nyckel
+        const apiKey = "eb14c3a5254264e10c6b1096517991a9"; // API-nyckel
         const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely,hourly,alerts&units=metric&lang=sv&appid=${apiKey}`;
   
         try {
@@ -56,7 +56,7 @@ const WeatherFetcher = () => {
         <p>Vind: {current.wind_speed} m/s</p>
   
         <hr />
-  
+        
         <h2>Morgondagens prognos</h2>
         <p>{tomorrow.weather[0].description}</p>
         <p>Dagtemp: {tomorrow.temp.day} °C</p>
