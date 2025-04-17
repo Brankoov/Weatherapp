@@ -1,19 +1,20 @@
-import React from "react";
-import type { WeatherData } from "../types/weather";
+import { useWeather } from "src/types/useWeather";
 
-type Props = {
-  weather: WeatherData;
-};
+const WeatherToday = () => {
+  const { weather, loading, error } = useWeather();
 
-const WeatherToday: React.FC<Props> = ({ weather }) => {
-  const current = weather.current;
+  if (loading) return <p>Hämtar väder...</p>;
+  if (error) return <p>{error}</p>;
+  if (!weather) return <p>Kunde inte hämta väderdata.</p>;
+
+  const { temp, weather: weatherInfo, wind_speed } = weather.current;
 
   return (
     <div>
-      <h2>Dagens väder</h2>
-      <p>{current.weather[0].description}</p>
-      <p>Temperatur: {current.temp} °C</p>
-      <p>Vind: {current.wind_speed} m/s</p>
+      <h2>Vädret idag</h2>
+      <p>{weatherInfo[0].description}</p>
+      <p>Temperatur: {temp} °C</p>
+      <p>Vind: {wind_speed} m/s</p>
     </div>
   );
 };

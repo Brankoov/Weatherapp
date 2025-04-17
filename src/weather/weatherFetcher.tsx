@@ -54,9 +54,10 @@ const WeatherFetcher = () => {
         <p>{current.weather[0].description}</p>
         <p>Temperatur: {current.temp} °C</p>
         <p>Vind: {current.wind_speed} m/s</p>
+       
   
         <hr />
-        
+
         <h2>Morgondagens prognos</h2>
         <p>{tomorrow.weather[0].description}</p>
         <p>Dagtemp: {tomorrow.temp.day} °C</p>

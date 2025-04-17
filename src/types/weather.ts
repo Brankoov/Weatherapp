@@ -3,8 +3,10 @@ export type WeatherData = {
       temp: number;
       weather: { description: string }[];
       wind_speed: number;
+      
     };
     daily: {
+      wind_speed: number;
       temp: {
         min: number;
         max: number;
