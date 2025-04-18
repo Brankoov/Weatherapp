@@ -14,9 +14,11 @@ const TomorrowForecast = () => {
       <h2 className="text-xl font-semibold">Morgondagens prognos</h2>
       <p>{tomorrow.weather[0].description}</p>
       <p>Dagtemp: {tomorrow.temp.day} °C</p>
-      <p>Morgontemp: {tomorrow.temp.morning ?? "Data saknas"} °C</p>
-      <p>Eftermiddagstemp: {tomorrow.temp.evening ?? "Data saknas"} °C</p>
       <p>Min: {tomorrow.temp.min} °C, Max: {tomorrow.temp.max} °C</p>
+      <p>Morgontemp: {tomorrow.temp.morn ?? "Data saknas"} °C</p>
+      <p>Eftermiddagstemp: {tomorrow.temp.eve ?? "Data saknas"} °C</p>
+      <p>Vind: {tomorrow.wind_speed} m/s </p>
+      <p>Regn: {typeof tomorrow.rain === "number" ? `${tomorrow.rain} mm` : "Inget regn"}</p>
     </div>
   );
 };

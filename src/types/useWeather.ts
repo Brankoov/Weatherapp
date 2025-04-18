@@ -10,11 +10,12 @@ export function useWeather() {
     const fetchWeather = async (latitude: number, longitude: number) => {
       const apiKey = "eb14c3a5254264e10c6b1096517991a9";
       const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely,hourly,alerts&units=metric&lang=sv&appid=${apiKey}`;
-
+      
       try {
         const response = await fetch(url);
         if (!response.ok) throw new Error(`Fel vid API-anrop: ${response.status}`);
         const data = await response.json();
+        console.log("Väderdata från API:", data); // All data i konsolen
         setWeather(data);
       } catch (err: any) {
         console.error("Fel vid hämtning:", err);
@@ -22,6 +23,7 @@ export function useWeather() {
       } finally {
         setLoading(false);
       }
+      
     };
 
     navigator.geolocation.getCurrentPosition(
