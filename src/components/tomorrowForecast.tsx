@@ -10,8 +10,8 @@ const TomorrowForecast = () => {
   const tomorrow = weather.daily[1];
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <h2 className="text-xl font-semibold">Morgondagens prognos</h2>
+    <div>
+      <h2>Vädret imorgon</h2>      
       <p>{tomorrow.weather[0].description}</p>
       <p>Dagtemp: {tomorrow.temp.day} °C</p>
       <p>Min: {tomorrow.temp.min} °C, Max: {tomorrow.temp.max} °C</p>

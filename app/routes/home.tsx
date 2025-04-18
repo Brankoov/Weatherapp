@@ -14,7 +14,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <main className="flex flex-col items-center pt-16 gap-10">
-      <h1 className="text-2xl font-bold">Väder app 1.0</h1>
+      <h1 className="text-2xl font-bold">Kläder för väder!</h1>
       <WeatherToday />
       <ClothingRecommendation />
       <TomorrowLink />
