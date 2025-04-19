@@ -1,8 +1,10 @@
 import type { Route } from "./+types/home";
-
-import ClothingRecommendation from "src/components/clothingRecommendation";
-import TomorrowLink from "src/components/tomorrowLink";
+import { useWeather } from "src/types/useWeather";
+import getWeatherEmoji from "src/utils/getWeatherEmoji";
 import WeatherToday from "src/components/weatherToday";
+import ClothingRecommendation from "src/components/clothingRecommendation";
+import ArrowButton from "src/components/arrowButton";
+import styles from './Home.module.css'; // Importera CSS-modulen
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -12,12 +14,30 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  const { weather, loading, error } = useWeather();
+
+  if (loading) return <p>Hämtar vädret…</p>;
+  if (error || !weather) return <p>Kunde inte hämta vädret.</p>;
+
+  const desc = weather.current.weather[0].description;
+
   return (
-    <main className="flex flex-col items-center pt-16 gap-10">
-      <h1 className="text-2xl font-bold">Kläder för väder!</h1>
-      <WeatherToday />
+    <main className={styles.container}>
+      <h1 className={styles.title}>Kläder för väder!</h1>
+
+      {/* Rad med emoji+data och pil */}
+      <div className={styles.weatherContainer}>
+        {/* Emoji + WeatherToday i en kolumn */}
+        <div className={styles.weatherColumn}>
+          <div className={styles.emoji}>{getWeatherEmoji(desc)}</div>
+          <WeatherToday />
+        </div>
+
+        {/* Pil till höger */}
+        <ArrowButton to="/tomorrow" direction="right" />
+      </div>
+
       <ClothingRecommendation />
-      <TomorrowLink />
     </main>
   );
 }

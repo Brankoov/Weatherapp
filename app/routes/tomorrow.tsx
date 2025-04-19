@@ -1,26 +1,38 @@
-import { Link } from "react-router";
-import ClothingRecommendation from "src/components/clothingRecommendation";
-
+import { useWeather } from "src/types/useWeather";
+import getWeatherEmoji from "src/utils/getWeatherEmoji";
 import TomorrowForecast from "src/components/tomorrowForecast";
+import ClothingRecommendation from "src/components/clothingRecommendation";
+import ArrowButton from "src/components/arrowButton";
+import styles from './Tomorrow.module.css'; // Importera CSS-modulen
 
-const Tomorrow = () => {
+export default function Tomorrow() {
+  const { weather, loading, error } = useWeather();
+
+  if (loading) return <p>Hämtar vädret…</p>;
+  if (error || !weather) return <p>Kunde inte hämta vädret.</p>;
+
+  const desc = weather.daily[1].weather[0].description;
 
   return (
-    <main className="flex flex-col items-center pt-16 gap-10">
-      <h1 className="text-2xl font-bold">Morgondagens prognos</h1>
-      <TomorrowForecast />
+    <main className={styles.container}>
+      <h1 className={styles.title}>Morgondagens prognos</h1>
+
+      {/* Rad med pil, emoji+data */}
+      <div className={styles.weatherContainer}>
+        {/* Pil till vänster */}
+        <ArrowButton to="/" direction="left" />
+
+        {/* Emoji + TomorrowForecast i en kolumn */}
+        <div className={styles.weatherColumn}>
+          <div className={styles.emoji}>{getWeatherEmoji(desc)}</div>
+          <TomorrowForecast />
+        </div>
+      </div>
+
       <ClothingRecommendation dayIndex={1} />
-      <Link
-        to="/"
-        className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition"
-      >
-        Startsida
-      </Link>
     </main>
   );
-};
-
-export default Tomorrow;
+}
     
       
         
