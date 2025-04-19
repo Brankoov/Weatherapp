@@ -21,6 +21,8 @@ export default function Home() {
 
   const desc = weather.current.weather[0].description;
 
+  console.log("Väder‑description:", JSON.stringify(desc)); 
+
   return (
     <main className={styles.container}>
       <h1 className={styles.title}>Kläder för väder!</h1>
@@ -28,8 +30,10 @@ export default function Home() {
       {/* Rad med emoji+data och pil */}
       <div className={styles.weatherContainer}>
         {/* Emoji + WeatherToday i en kolumn */}
+        
         <div className={styles.weatherColumn}>
           <div className={styles.emoji}>{getWeatherEmoji(desc)}</div>
+          
           <WeatherToday />
         </div>
 

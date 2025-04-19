@@ -1,16 +1,16 @@
 const getWeatherEmoji = (description: string): string => {
-    const lowerDesc = description.toLowerCase();
+    const d = description.toLowerCase();
   
-    if (lowerDesc.includes("sol")) return "☀️";
-    if (lowerDesc.includes("moln") && lowerDesc.includes("regn")) return "🌦️";
-    if (lowerDesc.includes("moln")) return "☁️";
-    if (lowerDesc.includes("regn")) return "🌧️";
-    if (lowerDesc.includes("snö")) return "🌨️";
-    if (lowerDesc.includes("åska")) return "🌩️";
-    if (lowerDesc.includes("vind") || lowerDesc.includes("blåsigt")) return "💨";
+    if (d.includes("sol"))                        return "☀️";
+    if (d.includes("moln") && d.includes("regn")) return "🌦️";
+    // 🛠︎ lägg till mulet här:
+    if (d.includes("mulet") || d.includes("moln")) return "☁️";
+    if (d.includes("regn"))                       return "🌧️";
+    if (d.includes("snö"))                        return "🌨️";
+    if (d.includes("åska"))                       return "🌩️";
+    if (d.includes("vind") || d.includes("blåsigt")) return "💨";
   
-    return "🌈";
-
+    return "🌈"; // fallback
   };
-
-  export default getWeatherEmoji; 
+  
+  export default getWeatherEmoji;
