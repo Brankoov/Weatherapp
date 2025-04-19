@@ -3,7 +3,7 @@ import getWeatherEmoji from "src/utils/getWeatherEmoji";
 import TomorrowForecast from "src/components/tomorrowForecast";
 import ClothingRecommendation from "src/components/clothingRecommendation";
 import ArrowButton from "src/components/arrowButton";
-import styles from './Tomorrow.module.css'; // Importera CSS-modulen
+import styles from './tomorrow.module.css'; // Importera CSS-modulen
 
 export default function Tomorrow() {
   const { weather, loading, error } = useWeather();

@@ -4,7 +4,7 @@ import getWeatherEmoji from "src/utils/getWeatherEmoji";
 import WeatherToday from "src/components/weatherToday";
 import ClothingRecommendation from "src/components/clothingRecommendation";
 import ArrowButton from "src/components/arrowButton";
-import styles from './Home.module.css'; // Importera CSS-modulen
+import styles from './home.module.css'; // Importera CSS-modulen
 
 export function meta({}: Route.MetaArgs) {
   return [
