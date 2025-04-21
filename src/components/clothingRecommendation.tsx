@@ -53,7 +53,10 @@ type Props = {
       recommendations.push("☁️ Mulet väder – men inget regn, så vanliga kläder räcker.");
     } else if (description.includes("sol")) {
       recommendations.push("☀️ Soligt – glöm inte solhatt och solkräm!");
-    }
+    } else if (description.includes("duggregn")) {
+        recommendations.push("☔ Duggregn!");
+      }
+    
   
     return (
       <div>

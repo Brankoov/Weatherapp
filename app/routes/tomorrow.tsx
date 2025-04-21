@@ -22,7 +22,7 @@ export default function Tomorrow() {
       {/* Rad med pil, emoji+data */}
       <div className={styles.weatherContainer}>
         {/* Pil till vänster */}
-        <ArrowButton to="/" direction="left" />
+        <ArrowButton to="/" direction="left" className={styles.arrowLeft} />
 
         {/* Emoji + TomorrowForecast i en kolumn */}
         <div className={styles.weatherColumn}>

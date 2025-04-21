@@ -11,15 +11,16 @@
     font-weight: bold;
   }
   
-  .weather-container {
+  .weatherContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* centrera väderkolumnen */
     align-items: center;
     width: 100%;
     max-width: 64rem;
+    
   }
   
-  .weather-column {
+  .weatherColumn {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,4 +29,15 @@
   .emoji {
     font-size: 4rem;
     margin-bottom: 0.5rem;
+  }
+  .arrowRight {
+    font-size: 1.875rem;
+    transition: transform 0.2s ease-in-out;
+    align-self: center; /* så den centreras vertikalt med väderkolumnen */
+    
+    cursor: pointer;
+  }
+  
+  .arrowRight:hover {
+    transform: scale(1.1);
   }

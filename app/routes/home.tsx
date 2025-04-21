@@ -38,7 +38,7 @@ export default function Home() {
         </div>
 
         {/* Pil till höger */}
-        <ArrowButton to="/tomorrow" direction="right" />
+        <ArrowButton to="/tomorrow" direction="right" className={styles.arrowRight} />
       </div>
 
       <ClothingRecommendation />
