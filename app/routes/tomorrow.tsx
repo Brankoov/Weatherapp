@@ -1,13 +1,15 @@
-import { useWeather } from "src/types/useWeather";
+
 import getWeatherEmoji from "src/utils/getWeatherEmoji";
 import TomorrowForecast from "src/components/tomorrowForecast";
 import ClothingRecommendation from "src/components/clothingRecommendation";
 import ArrowButton from "src/components/arrowButton";
 import styles from './tomorrow.module.css'; // Importera CSS-modulen
+import { useContext } from "react";
+import { WeatherContext } from "src/context/weatherContext";
 
 export default function Tomorrow() {
-  const { weather, loading, error } = useWeather();
-
+    const { weather, loading, error } = useContext(WeatherContext);
+    console.log("Morgondagens väderdata:", weather?.daily[1]);
   if (loading) return <p>Hämtar vädret…</p>;
   if (error || !weather) return <p>Kunde inte hämta vädret.</p>;
 
