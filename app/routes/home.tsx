@@ -26,21 +26,24 @@ export default function Home() {
   return (
     <main className={styles.container}>
       <h1 className={styles.title}>Kläder för väder!</h1>
-
-      {/* Rad med emoji+data och pil */}
-      <div className={styles.weatherContainer}>
-        {/* Emoji + WeatherToday i en kolumn */}
-        
+  
+      {/* Rad med tom kolumn, väderdatan och pilen */}
+      <div className={styles.weatherRow}>
+        {/* Tom kolumn till vänster för att centrera väderkolumnen */}
+        <div />
+  
+        {/* Emoji + WeatherToday */}
         <div className={styles.weatherColumn}>
           <div className={styles.emoji}>{getWeatherEmoji(desc)}</div>
-          
           <WeatherToday />
         </div>
-
+  
         {/* Pil till höger */}
-        <ArrowButton to="/tomorrow" direction="right" className={styles.arrowRight} />
+        <div className={styles.arrowColumn}>
+          <ArrowButton to="/tomorrow" direction="right" className={styles.arrowRight} />
+        </div>
       </div>
-
+  
       <ClothingRecommendation />
     </main>
   );

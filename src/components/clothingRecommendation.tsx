@@ -41,7 +41,7 @@ type Props = {
     if (rain > 5) {
       recommendations.push("🌧️ Ta med regnjacka och stövlar.");
     } else if (rain > 0.5) {
-      recommendations.push("🌦️ Lite regn – ta gärna med regnjacka.");
+      recommendations.push("🌦️ Lite regn.");
     } else {
       recommendations.push("🌞 Det verkar vara torrt idag – Lite eller inget regn!");
     }
