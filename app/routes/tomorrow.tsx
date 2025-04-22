@@ -17,22 +17,27 @@ export default function Tomorrow() {
 
   return (
     <main className={styles.container}>
-      <h1 className={styles.title}>Morgondagens prognos</h1>
+    <h1 className={styles.title}>Morgondagens prognos</h1>
 
-      {/* Rad med pil, emoji+data */}
-      <div className={styles.weatherContainer}>
-        {/* Pil till vänster */}
+    {/* Rad med pil, emoji+data, tom plats till höger */}
+    <div className={styles.weatherRow}>
+      {/* Pil till vänster */}
+      <div className={styles.arrowColumn}>
         <ArrowButton to="/" direction="left" className={styles.arrowLeft} />
-
-        {/* Emoji + TomorrowForecast i en kolumn */}
-        <div className={styles.weatherColumn}>
-          <div className={styles.emoji}>{getWeatherEmoji(desc)}</div>
-          <TomorrowForecast />
-        </div>
       </div>
 
-      <ClothingRecommendation dayIndex={1} />
-    </main>
+      {/* Emoji + TomorrowForecast i mitten */}
+      <div className={styles.weatherColumn}>
+        <div className={styles.emoji}>{getWeatherEmoji(desc)}</div>
+        <TomorrowForecast />
+      </div>
+
+      {/* Tom plats till höger */}
+      <div />
+    </div>
+
+    <ClothingRecommendation dayIndex={1} />
+  </main>
   );
 }
     
