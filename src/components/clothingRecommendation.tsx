@@ -63,7 +63,7 @@ type Props = {
     return (
       <div>
         <h2 className="text-lg font-semibold">👶 Klädrekommendationer för barn</h2>
-        <ul className="list-disc pl-5 space-y-1">
+        <ul className="list-disc pl-5 space-y-1 mb-12">
           {recommendations.map((rec, index) => (
             <li key={index}>{rec}</li>
           ))}

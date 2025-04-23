@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import styles from './hourlyForecast.module.css'; 
 
 type HourlyData = {
@@ -12,6 +13,14 @@ type HourlyData = {
   
   const HourlyForecast = ({ hourly }: Props) => {
 
+    const listRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (listRef.current) {
+      listRef.current.scrollLeft = 0; // Scroll till början
+    }
+  }, [hourly]);
+
   
     const getEmoji = (code: number, rain: number) => {
       if (rain > 0) return "🌧️";
@@ -23,10 +32,10 @@ type HourlyData = {
     return (
         <div>
           <h3>Timmar för idag</h3>
-          <div className={styles.wrapper}>
+          <div className={styles.wrapper} ref={listRef}>
             <div className={styles.list}>
               {hourly.map((h) => (
-                <div key={h.time} className={styles.item}>
+                <div key={h.time} className={styles.item} >
                   <div>{new Date(h.time).getHours()}:00</div>
                   <div style={{ fontSize: "1.5rem" }}>
                     {getEmoji(h.weatherCode, h.precipitation)}
