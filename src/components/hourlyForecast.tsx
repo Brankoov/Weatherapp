@@ -1,3 +1,5 @@
+import styles from './hourlyForecast.module.css'; 
+
 type HourlyData = {
     time: string; // "2025-04-23T09:00"
     weatherCode: number;
@@ -19,19 +21,23 @@ type HourlyData = {
     };
   
     return (
-      <div>
-        <h3>Timmar för idag</h3>
-        <div style={{ display: "flex", gap: "10px" }}>
-        {hourly.map(hour => (
-         <div key={hour.time}>
-          <div>{new Date(hour.time).getHours()}:00</div>
-            <div>{getEmoji(hour.weatherCode, hour.precipitation)}</div>
-              {hour.precipitation > 0 && <div>{hour.precipitation} mm</div>}
-         </div>
-))}
+        <div>
+          <h3>Timmar för idag</h3>
+          <div className={styles.wrapper}>
+            <div className={styles.list}>
+              {hourly.map((h) => (
+                <div key={h.time} className={styles.item}>
+                  <div>{new Date(h.time).getHours()}:00</div>
+                  <div style={{ fontSize: "1.5rem" }}>
+                    {getEmoji(h.weatherCode, h.precipitation)}
+                  </div>
+                  {h.precipitation > 0 && <div>{h.precipitation} mm</div>}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-    );
-  };
-
-  export default HourlyForecast;
+      );
+    };
+    
+    export default HourlyForecast;
