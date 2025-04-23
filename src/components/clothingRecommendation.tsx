@@ -39,7 +39,9 @@ type Props = {
   
     // Regn
     if (rain > 5) {
-      recommendations.push("🌧️ Ta med regnjacka och stövlar.");
+        recommendations.push("🌧️ Ta med regnjacka och stövlar.");
+    } else if (rain > 3) {
+      recommendations.push("🌧️ Ta med regnjacka");
     } else if (rain > 0.5) {
       recommendations.push("🌦️ Lite regn.");
     } else {
@@ -54,7 +56,7 @@ type Props = {
     } else if (description.includes("sol")) {
       recommendations.push("☀️ Soligt – glöm inte solhatt och solkräm!");
     } else if (description.includes("duggregn")) {
-        recommendations.push("☔ Duggregn!");
+        recommendations.push("☔ Duggregn, kan vara bra att ha regnkläder!");
       }
     
   

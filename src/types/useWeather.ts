@@ -9,7 +9,7 @@ export function useWeather() {
   useEffect(() => {
     const fetchWeather = async (latitude: number, longitude: number) => {
       const apiKey = "eb14c3a5254264e10c6b1096517991a9";
-      const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely,hourly,alerts&units=metric&lang=sv&appid=${apiKey}`;
+      const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely,alerts&units=metric&lang=sv&appid=${apiKey}`;
       
       try {
         const response = await fetch(url);

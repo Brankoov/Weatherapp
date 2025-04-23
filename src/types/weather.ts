@@ -1,5 +1,7 @@
 export type WeatherData = {
+    hourly: HourlyItem;
     current: {
+      dt: number;
       temp: number;
       weather: { description: string }[];
       wind_speed: number;
@@ -22,3 +24,10 @@ export type WeatherData = {
         snow?: number;   // mm snö under dagen
       }>;
     };
+    export type HourlyItem = {
+        map: any;
+        dt: number;
+        weather: { id: number }[];
+        rain?: { ["1h"]?: number };
+        
+      };

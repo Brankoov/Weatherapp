@@ -6,6 +6,7 @@ import ArrowButton from "src/components/arrowButton";
 import styles from './tomorrow.module.css'; // Importera CSS-modulen
 import { useContext } from "react";
 import { WeatherContext } from "src/context/weatherContext";
+import HourlyForecast from "src/components/hourlyForecast";
 
 export default function Tomorrow() {
     const { weather, loading, error } = useContext(WeatherContext);
@@ -14,6 +15,24 @@ export default function Tomorrow() {
   if (error || !weather) return <p>Kunde inte hämta vädret.</p>;
 
   const desc = weather.daily[1].weather[0].description;
+
+  // Dagens datum + 1 = imorgon
+const tomorrowDate = new Date();
+tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+const tomorrowDay = tomorrowDate.getDate();
+
+// Filtrera hourly-data för imorgon (kl 7–18)
+const hourlyData = weather.hourly
+  .map((h: any) => ({
+    time: new Date(h.dt * 1000).toISOString(),
+    weatherCode: h.weather[0].id,
+    precipitation: h.rain?.["1h"] ?? 0,
+  }))
+  .filter((entry: { time: string }) => {
+    const date = new Date(entry.time);
+    const hour = date.getHours();
+    return date.getDate() === tomorrowDay && hour >= 7 && hour <= 18;
+  });
 
   return (
     <main className={styles.container}>
@@ -34,8 +53,8 @@ export default function Tomorrow() {
 
       {/* Tom plats till höger */}
       <div />
-    </div>
-
+    </div>    
+    <HourlyForecast hourly={hourlyData} />
     <ClothingRecommendation dayIndex={1} />
   </main>
   );
